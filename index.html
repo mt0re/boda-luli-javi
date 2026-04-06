@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luli & Javi · 23 de Mayo 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --burgundy: #7A0020;
+      --burgundy-dark: #5C0018;
+      --burgundy-light: #9B2335;
+      --text-dark: #3D1010;
+      --font-script: 'Beth Ellen', cursive;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: var(--font-serif);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1rem 2rem;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(122, 0, 32, 0.12);
+    }
+
+    nav a {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 0.6; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      opacity: 0.7;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta .sep {
+      opacity: 0.4;
+      letter-spacing: 0;
+    }
+
+    .hero-names {
+      font-family: var(--font-script);
+      font-size: clamp(5rem, 15vw, 12rem);
+      color: var(--burgundy);
+      line-height: 1;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 500;
+      animation: fadeUp 1.2s 0.3s ease both;
+    }
+
+    /* ── DATE BLOCK ── */
+    .date-block {
+      background: var(--burgundy);
+      color: var(--cream);
+      text-align: center;
+      padding: 5rem 2rem;
+      margin: 0 2rem;
+      border-radius: 4px;
+    }
+
+    .date-block .date-title {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .date-block .date-time {
+      font-family: var(--font-script);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: rgba(245, 240, 232, 0.75);
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .countdown-box {
+      display: inline-flex;
+      gap: 0;
+      border: 1px solid rgba(122, 0, 32, 0.25);
+      padding: 2.5rem 3rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .countdown-unit {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .countdown-unit + .countdown-unit::before {
+      content: ':';
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--burgundy);
+      transform: translateX(-50%);
+      font-family: var(--font-serif);
+      font-weight: 300;
+    }
+
+    .countdown-num {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--burgundy);
+      font-weight: 300;
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+    }
+
+    .countdown-unit:last-child .countdown-num {
+      color: rgba(122, 0, 32, 0.45);
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 500;
+    }
+
+    /* ── LOCATION SECTIONS ── */
+    .location-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: 60vh;
+      padding: 5rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .location-section.reverse { direction: rtl; }
+    .location-section.reverse > * { direction: ltr; }
+
+    .illustration-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      opacity: 0.15;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+
+    /* placeholder SVG decorations */
+    .illus-church, .illus-tree, .illus-shoes, .illus-vase, .illus-table-candle, .illus-banquet {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .location-content { }
+
+    .section-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--burgundy);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-info {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      line-height: 2;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--cream);
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-square {
+      border-radius: 4px;
+    }
+
+    /* ── DRESSCODE ── */
+    .dresscode-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 5rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dresscode-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--burgundy);
+      margin-bottom: 1.2rem;
+    }
+
+    .dresscode-main {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .dresscode-sub {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-dark);
+      font-weight: 300;
+    }
+
+    /* ── REGALO ── */
+    .regalo-section {
+      padding: 5rem 4rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .regalo-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--burgundy);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .regalo-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .bank-card {
+      background: var(--burgundy);
+      color: var(--cream);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 2.2;
+    }
+
+    .bank-card strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+    }
+
+    /* ── ASISTENCIA ── */
+    .asistencia-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 5rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .asistencia-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--burgundy);
+      margin-bottom: 1.5rem;
+    }
+
+    .asistencia-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--burgundy);
+      margin-bottom: 3rem;
+    }
+
+    .footer-illustration {
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.15;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--burgundy);
+    }
+
+    .footer-copy {
+      margin-top: 3rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      color: var(--text-dark);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .location-section,
+      .dresscode-section,
+      .regalo-section,
+      .asistencia-section {
+        padding: 4rem 2.5rem;
+        gap: 2.5rem;
+      }
+
+      .countdown-box { padding: 2rem 1.5rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav { gap: 1.5rem; padding: 0.85rem 1rem; }
+      nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+
+      .hero { padding: 5rem 1.5rem 3rem; }
+      .hero-names { font-size: clamp(4rem, 18vw, 6rem); }
+
+      .location-section,
+      .location-section.reverse,
+      .dresscode-section,
+      .regalo-section,
+      .asistencia-section {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+        direction: ltr;
+        text-align: center;
+      }
+
+      /* En mobile: ilustración siempre arriba */
+      .location-section .illustration-placeholder { order: -1; }
+      .location-section.reverse .location-content { order: -1; }
+      .location-section.reverse .illustration-placeholder { order: 0; }
+
+      .illustration-placeholder { min-height: 200px; }
+
+      .section-info { text-align: center; }
+
+      .btn { display: block; width: 100%; text-align: center; }
+
+      .countdown-box {
+        padding: 1.5rem 0.5rem;
+        gap: 0;
+      }
+
+      .countdown-num { font-size: clamp(2rem, 8vw, 3rem); }
+      .countdown-label { font-size: 0.6rem; }
+
+      .date-block { margin: 0 1rem; padding: 3.5rem 1.5rem; }
+
+      .bank-card { padding: 2rem 1.2rem; font-size: 0.78rem; }
+
+      .regalo-section { text-align: center; }
+
+      .dresscode-section .illustration-placeholder { order: -1; }
+
+      .asistencia-section .illustration-placeholder { order: 1; }
+
+      footer { padding: 3rem 1.5rem 2rem; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 380px) {
+      nav a { font-size: 0.58rem; letter-spacing: 0.07em; }
+      .hero-names { font-size: clamp(3rem, 20vw, 5rem); }
+      .countdown-num { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#ceremonia">Ceremonia</a>
+    <a href="#fiesta">Fiesta</a>
+    <a href="#asistencia">Asistencia</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span>23 de Mayo</span>
+      <span class="sep">·</span>
+      <span>SDE</span>
+      <span class="sep">·</span>
+      <span>2026</span>
+    </div>
+    <h1 class="hero-names">luli & javi</h1>
+    <p class="hero-subtitle">Acompañanos en este día tan especial</p>
+  </section>
+
+  <!-- DATE -->
+  <div class="date-block reveal">
+    <p class="date-title">23 de mayo</p>
+    <p class="date-time">16:00 hs</p>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section reveal">
+    <div class="countdown-box">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">--</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">--</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEREMONIA -->
+  <section id="ceremonia" class="location-section reveal">
+    <div class="illustration-placeholder">
+      <!-- reemplazar con: <img src="iglesia.png" alt="Parroquia San Francisco" class="illus-church"> -->
+      <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-church" style="opacity:1">
+        <rect x="100" y="220" width="100" height="100" rx="2" stroke="#7A0020" stroke-width="2"/>
+        <rect x="120" y="250" width="60" height="70" rx="2" stroke="#7A0020" stroke-width="1.5"/>
+        <path d="M100 220 L150 160 L200 220" stroke="#7A0020" stroke-width="2"/>
+        <rect x="60" y="180" width="50" height="140" rx="2" stroke="#7A0020" stroke-width="2"/>
+        <path d="M60 180 L85 140 L110 180" stroke="#7A0020" stroke-width="2"/>
+        <rect x="190" y="180" width="50" height="140" rx="2" stroke="#7A0020" stroke-width="2"/>
+        <path d="M190 180 L215 140 L240 180" stroke="#7A0020" stroke-width="2"/>
+        <circle cx="150" cy="200" r="12" stroke="#7A0020" stroke-width="1.5"/>
+        <path d="M148 245 Q150 240 152 245" stroke="#7A0020" stroke-width="1.5"/>
+        <line x1="75" y1="140" x2="75" y2="120" stroke="#7A0020" stroke-width="2"/>
+        <line x1="65" y1="130" x2="85" y2="130" stroke="#7A0020" stroke-width="2"/>
+        <line x1="215" y1="140" x2="215" y2="120" stroke="#7A0020" stroke-width="2"/>
+        <line x1="205" y1="130" x2="225" y2="130" stroke="#7A0020" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="location-content">
+      <h2 class="section-title">ceremonia</h2>
+      <div class="section-info">
+        16:00 hs<br>
+        Parroquia San Francisco<br>
+        Av. Roca Sur 702
+      </div>
+      <a class="btn" href="https://www.google.com/maps/place/Parroquia+San+Francisco+Solano/@-27.7857066,-64.2555153,1014m/data=!3m2!1e3!4b1!4m6!3m5!1s0x943b5321c2ced073:0x3269aeda5787441f!8m2!3d-27.7857066!4d-64.2555153!16s%2Fg%2F11h71nkk_s?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+  </section>
+
+  <!-- FIESTA -->
+  <section id="fiesta" class="location-section reverse reveal">
+    <div class="location-content">
+      <h2 class="section-title">una fiesta en<br>la naturaleza</h2>
+      <div class="section-info">
+        18:00 hs<br>
+        Finca Santo Domingo<br>
+        Ruta 1, Km 9,5
+      </div>
+      <a class="btn" href="https://www.google.com/maps/place/27%C2%B049'27.0%22S+64%C2%B010'18.8%22W/@-27.8241667,-64.1718889,1014m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d-27.8241667!4d-64.1718889?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+    <div class="illustration-placeholder">
+      <!-- reemplazar con: <img src="arbol.png" alt="Finca Santo Domingo" class="illus-tree"> -->
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-tree" style="opacity:1">
+        <path d="M150 280 L150 160" stroke="#7A0020" stroke-width="3" stroke-linecap="round"/>
+        <path d="M150 200 C120 180 90 170 80 150" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
+        <path d="M150 220 C170 200 200 195 220 180" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="150" cy="130" rx="55" ry="50" stroke="#7A0020" stroke-width="2"/>
+        <path d="M130 120 Q150 100 170 120 Q160 90 140 95 Q120 90 130 120Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <path d="M110 145 Q130 130 150 145 Q140 115 120 120 Q100 115 110 145Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <line x1="80" y1="280" x2="250" y2="260" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="60" y1="285" x2="280" y2="270" stroke="#7A0020" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- DRESSCODE -->
+  <section class="dresscode-section reveal">
+    <div class="illustration-placeholder">
+      <!-- reemplazar con: <img src="zapatos.png" alt="Dress code" class="illus-shoes"> -->
+      <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-shoes" style="opacity:1">
+        <path d="M60 180 Q80 160 130 155 Q160 153 180 165 Q200 175 200 190 Q200 210 170 215 Q130 220 60 200 Z" stroke="#7A0020" stroke-width="2" fill="none"/>
+        <path d="M130 155 L120 100" stroke="#7A0020" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M110 90 Q120 60 140 80" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <path d="M120 100 Q90 120 80 140" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M120 100 Q150 120 160 140" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M170 240 Q185 220 230 218 Q255 217 265 228 Q270 238 255 244 Q230 252 170 258 Z" stroke="#7A0020" stroke-width="2" fill="none"/>
+        <path d="M230 218 L225 200" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="226" cy="196" rx="10" ry="6" stroke="#7A0020" stroke-width="1.5"/>
+        <path d="M216 196 Q226 185 236 196" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div>
+      <h2 class="dresscode-title">dress code</h2>
+      <p class="dresscode-main">Elegante cómodo</p>
+      <p class="dresscode-sub">¡Queremos que bailes hasta el final!</p>
+    </div>
+  </section>
+
+  <!-- REGALO -->
+  <section class="regalo-section reveal">
+    <div>
+      <h2 class="regalo-title">tu presencia es el mejor regalo</h2>
+      <p class="regalo-sub">Pero si deseás tener un detalle con nosotros,<br>adjuntamos los datos de nuestra cuenta bancaria:</p>
+    </div>
+    <div class="bank-card">
+      Datos Bancarios BBVA<br>
+      <strong>Alias: BODA.LULI.JAVI</strong>
+      CBU: 0170071840000040937700<br>
+      Caja de Ahorro: 71-409377/0<br>
+      Titular: Lourdes Vaccari<br>
+      CUIT: 27-36886039-0
+    </div>
+  </section>
+
+  <!-- ASISTENCIA -->
+  <section id="asistencia" class="asistencia-section reveal">
+    <div>
+      <h2 class="asistencia-title">asistencia</h2>
+      <p class="asistencia-text">Confirmanos tu asistencia<br>hasta el 25 de abril</p>
+      <a class="btn btn-square" href="https://docs.google.com/forms/d/e/1FAIpQLScKlnrfZMA96iZ9Ts428ZhC2bQKLBdSenXYtX_tdX1-GUAp5w/viewform" target="_blank" rel="noopener">Asistencia</a>
+    </div>
+    <div class="illustration-placeholder">
+      <!-- reemplazar con: <img src="mesa.png" alt="" class="illus-table-candle"> -->
+      <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-table-candle" style="opacity:1">
+        <ellipse cx="150" cy="200" rx="110" ry="40" stroke="#7A0020" stroke-width="2"/>
+        <rect x="130" y="80" width="20" height="100" rx="4" stroke="#7A0020" stroke-width="2"/>
+        <path d="M140 78 Q145 60 140 50 Q135 60 140 78Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <ellipse cx="200" cy="175" rx="25" ry="35" stroke="#7A0020" stroke-width="1.5"/>
+        <path d="M185 155 Q200 135 215 155" stroke="#7A0020" stroke-width="1" fill="none"/>
+        <path d="M220 140 Q235 125 225 115 Q230 130 220 140Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <path d="M240 160 Q255 145 265 155 Q270 165 260 170 Q250 160 240 160Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h2 class="footer-title">¡te esperamos!</h2>
+    <div class="footer-illustration">
+      <!-- reemplazar con: <img src="banquete.png" alt=""> -->
+      <svg viewBox="0 0 700 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;opacity:1">
+        <path d="M50 200 Q200 180 350 170 Q500 160 660 150" stroke="#7A0020" stroke-width="3" stroke-linecap="round"/>
+        <path d="M50 210 Q200 190 350 180 Q500 170 660 160" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <!-- chairs left -->
+        <rect x="60" y="215" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="90" y="215" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="120" y="210" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="150" y="208" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <!-- chairs right -->
+        <rect x="520" y="165" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="550" y="163" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="580" y="160" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <rect x="610" y="158" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <!-- plates -->
+        <ellipse cx="200" cy="188" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
+        <ellipse cx="300" cy="180" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
+        <ellipse cx="420" cy="173" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
+        <!-- glasses -->
+        <path d="M240 185 L238 175 L248 175 L246 185 Q243 188 240 185Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <path d="M370 177 L368 167 L378 167 L376 177 Q373 180 370 177Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <!-- candle -->
+        <rect x="330" y="168" width="8" height="18" rx="2" stroke="#7A0020" stroke-width="1.5" fill="none"/>
+        <path d="M334 168 Q337 162 334 157 Q331 162 334 168Z" stroke="#7A0020" stroke-width="1" fill="none"/>
+        <!-- flowers -->
+        <circle cx="460" cy="175" r="12" stroke="#7A0020" stroke-width="1.5"/>
+        <circle cx="460" cy="170" r="5" stroke="#7A0020" stroke-width="1"/>
+        <line x1="460" y1="187" x2="460" y2="200" stroke="#7A0020" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <p class="footer-copy">Luli & Javi · 23 de Mayo 2026 · Santiago del Estero</p>
+  </footer>
+
+  <script>
+    // ── COUNTDOWN (Argentina UTC-3) ──
+    const weddingDate = new Date('2026-05-23T16:00:00-03:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000) / 60000);
+      const secs  = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-days').textContent  = pad(days);
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent  = pad(mins);
+      document.getElementById('cd-secs').textContent  = pad(secs);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── SCROLL REVEAL ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
