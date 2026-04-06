@@ -94,7 +94,7 @@
       font-size: clamp(5rem, 15vw, 12rem);
       color: var(--burgundy);
       line-height: 1;
-      margin-bottom: 2.5rem;
+      margin-bottom: 4rem;
       animation: fadeUp 1.2s ease both;
     }
 
@@ -209,6 +209,7 @@
       align-items: center;
       justify-content: center;
       min-height: 320px;
+      background: var(--cream);
     }
 
     .illus-img {
@@ -409,7 +410,6 @@
     .footer-illustration {
       max-width: 700px;
       margin: 0 auto;
-      opacity: 0.15;
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       color: var(--burgundy);
@@ -504,6 +504,17 @@
       .asistencia-section .illustration-placeholder { order: 1; }
 
       footer { padding: 3rem 1.5rem 2rem; }
+    }
+
+    /* Desktop: double small text sizes */
+    @media (min-width: 769px) {
+      .hero-meta { font-size: 1.1rem; }
+      .hero-subtitle { font-size: 1.3rem; }
+      .section-info { font-size: 1.3rem; }
+      .dresscode-main { font-size: 1.3rem; }
+      .dresscode-sub { font-size: 1.8rem; }
+      .asistencia-text { font-size: 1.8rem; }
+      .regalo-sub { font-size: 1.3rem; }
     }
 
     /* Small mobile */
