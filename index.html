@@ -209,11 +209,30 @@
       align-items: center;
       justify-content: center;
       min-height: 320px;
-      opacity: 0.15;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--burgundy);
+    }
+
+    .illus-img {
+      width: 100%;
+      max-width: 420px;
+      mix-blend-mode: multiply;
+      display: block;
+    }
+
+    .dresscode-imgs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .dresscode-imgs .illus-img {
+      max-width: 320px;
+    }
+
+    .dresscode-imgs .illus-img.zapatos {
+      max-width: 200px;
+      align-self: flex-end;
+      margin-right: 2rem;
     }
 
     /* placeholder SVG decorations */
@@ -548,22 +567,7 @@
   <!-- CEREMONIA -->
   <section id="ceremonia" class="location-section reveal">
     <div class="illustration-placeholder">
-      <!-- reemplazar con: <img src="iglesia.png" alt="Parroquia San Francisco" class="illus-church"> -->
-      <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-church" style="opacity:1">
-        <rect x="100" y="220" width="100" height="100" rx="2" stroke="#7A0020" stroke-width="2"/>
-        <rect x="120" y="250" width="60" height="70" rx="2" stroke="#7A0020" stroke-width="1.5"/>
-        <path d="M100 220 L150 160 L200 220" stroke="#7A0020" stroke-width="2"/>
-        <rect x="60" y="180" width="50" height="140" rx="2" stroke="#7A0020" stroke-width="2"/>
-        <path d="M60 180 L85 140 L110 180" stroke="#7A0020" stroke-width="2"/>
-        <rect x="190" y="180" width="50" height="140" rx="2" stroke="#7A0020" stroke-width="2"/>
-        <path d="M190 180 L215 140 L240 180" stroke="#7A0020" stroke-width="2"/>
-        <circle cx="150" cy="200" r="12" stroke="#7A0020" stroke-width="1.5"/>
-        <path d="M148 245 Q150 240 152 245" stroke="#7A0020" stroke-width="1.5"/>
-        <line x1="75" y1="140" x2="75" y2="120" stroke="#7A0020" stroke-width="2"/>
-        <line x1="65" y1="130" x2="85" y2="130" stroke="#7A0020" stroke-width="2"/>
-        <line x1="215" y1="140" x2="215" y2="120" stroke="#7A0020" stroke-width="2"/>
-        <line x1="205" y1="130" x2="225" y2="130" stroke="#7A0020" stroke-width="2"/>
-      </svg>
+      <img src="iglesia.png" alt="Parroquia San Francisco" class="illus-img" />
     </div>
     <div class="location-content">
       <h2 class="section-title">ceremonia</h2>
@@ -588,35 +592,15 @@
       <a class="btn" href="https://www.google.com/maps/place/27%C2%B049'27.0%22S+64%C2%B010'18.8%22W/@-27.8241667,-64.1718889,1014m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d-27.8241667!4d-64.1718889?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Cómo llegar</a>
     </div>
     <div class="illustration-placeholder">
-      <!-- reemplazar con: <img src="arbol.png" alt="Finca Santo Domingo" class="illus-tree"> -->
-      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-tree" style="opacity:1">
-        <path d="M150 280 L150 160" stroke="#7A0020" stroke-width="3" stroke-linecap="round"/>
-        <path d="M150 200 C120 180 90 170 80 150" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
-        <path d="M150 220 C170 200 200 195 220 180" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="150" cy="130" rx="55" ry="50" stroke="#7A0020" stroke-width="2"/>
-        <path d="M130 120 Q150 100 170 120 Q160 90 140 95 Q120 90 130 120Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <path d="M110 145 Q130 130 150 145 Q140 115 120 120 Q100 115 110 145Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <line x1="80" y1="280" x2="250" y2="260" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="60" y1="285" x2="280" y2="270" stroke="#7A0020" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
-      </svg>
+      <img src="arbol.png" alt="Finca Santo Domingo" class="illus-img" />
     </div>
   </section>
 
   <!-- DRESSCODE -->
   <section class="dresscode-section reveal">
-    <div class="illustration-placeholder">
-      <!-- reemplazar con: <img src="zapatos.png" alt="Dress code" class="illus-shoes"> -->
-      <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-shoes" style="opacity:1">
-        <path d="M60 180 Q80 160 130 155 Q160 153 180 165 Q200 175 200 190 Q200 210 170 215 Q130 220 60 200 Z" stroke="#7A0020" stroke-width="2" fill="none"/>
-        <path d="M130 155 L120 100" stroke="#7A0020" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M110 90 Q120 60 140 80" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <path d="M120 100 Q90 120 80 140" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M120 100 Q150 120 160 140" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M170 240 Q185 220 230 218 Q255 217 265 228 Q270 238 255 244 Q230 252 170 258 Z" stroke="#7A0020" stroke-width="2" fill="none"/>
-        <path d="M230 218 L225 200" stroke="#7A0020" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="226" cy="196" rx="10" ry="6" stroke="#7A0020" stroke-width="1.5"/>
-        <path d="M216 196 Q226 185 236 196" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-      </svg>
+    <div class="illustration-placeholder dresscode-imgs">
+      <img src="tacos.png" alt="Tacos" class="illus-img" />
+      <img src="zapatos.png" alt="Zapatos" class="illus-img zapatos" />
     </div>
     <div>
       <h2 class="dresscode-title">dress code</h2>
@@ -649,16 +633,7 @@
       <a class="btn btn-square" href="https://docs.google.com/forms/d/e/1FAIpQLScKlnrfZMA96iZ9Ts428ZhC2bQKLBdSenXYtX_tdX1-GUAp5w/viewform" target="_blank" rel="noopener">Asistencia</a>
     </div>
     <div class="illustration-placeholder">
-      <!-- reemplazar con: <img src="mesa.png" alt="" class="illus-table-candle"> -->
-      <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="illus-table-candle" style="opacity:1">
-        <ellipse cx="150" cy="200" rx="110" ry="40" stroke="#7A0020" stroke-width="2"/>
-        <rect x="130" y="80" width="20" height="100" rx="4" stroke="#7A0020" stroke-width="2"/>
-        <path d="M140 78 Q145 60 140 50 Q135 60 140 78Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <ellipse cx="200" cy="175" rx="25" ry="35" stroke="#7A0020" stroke-width="1.5"/>
-        <path d="M185 155 Q200 135 215 155" stroke="#7A0020" stroke-width="1" fill="none"/>
-        <path d="M220 140 Q235 125 225 115 Q230 130 220 140Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <path d="M240 160 Q255 145 265 155 Q270 165 260 170 Q250 160 240 160Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-      </svg>
+      <img src="vaso.png" alt="" class="illus-img" />
     </div>
   </section>
 
@@ -666,35 +641,7 @@
   <footer>
     <h2 class="footer-title">¡te esperamos!</h2>
     <div class="footer-illustration">
-      <!-- reemplazar con: <img src="banquete.png" alt=""> -->
-      <svg viewBox="0 0 700 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;opacity:1">
-        <path d="M50 200 Q200 180 350 170 Q500 160 660 150" stroke="#7A0020" stroke-width="3" stroke-linecap="round"/>
-        <path d="M50 210 Q200 190 350 180 Q500 170 660 160" stroke="#7A0020" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        <!-- chairs left -->
-        <rect x="60" y="215" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="90" y="215" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="120" y="210" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="150" y="208" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <!-- chairs right -->
-        <rect x="520" y="165" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="550" y="163" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="580" y="160" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <rect x="610" y="158" width="18" height="30" rx="3" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <!-- plates -->
-        <ellipse cx="200" cy="188" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
-        <ellipse cx="300" cy="180" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
-        <ellipse cx="420" cy="173" rx="14" ry="8" stroke="#7A0020" stroke-width="1.5"/>
-        <!-- glasses -->
-        <path d="M240 185 L238 175 L248 175 L246 185 Q243 188 240 185Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <path d="M370 177 L368 167 L378 167 L376 177 Q373 180 370 177Z" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <!-- candle -->
-        <rect x="330" y="168" width="8" height="18" rx="2" stroke="#7A0020" stroke-width="1.5" fill="none"/>
-        <path d="M334 168 Q337 162 334 157 Q331 162 334 168Z" stroke="#7A0020" stroke-width="1" fill="none"/>
-        <!-- flowers -->
-        <circle cx="460" cy="175" r="12" stroke="#7A0020" stroke-width="1.5"/>
-        <circle cx="460" cy="170" r="5" stroke="#7A0020" stroke-width="1"/>
-        <line x1="460" y1="187" x2="460" y2="200" stroke="#7A0020" stroke-width="1.5"/>
-      </svg>
+      <img src="banquete.png" alt="" class="illus-img" style="max-width:700px; mix-blend-mode:multiply;" />
     </div>
     <p class="footer-copy">Luli & Javi · 23 de Mayo 2026 · Santiago del Estero</p>
   </footer>
